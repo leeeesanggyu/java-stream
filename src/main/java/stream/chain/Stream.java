@@ -2,6 +2,7 @@ package stream.chain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -28,7 +29,7 @@ public class Stream <T> {
                 result.add(element);
             }
         }
-        return new Stream<>(result);
+        return Stream.of(result);
     }
 
     public <R> Stream<R> map(Function<T, R> function) {
@@ -37,6 +38,12 @@ public class Stream <T> {
             result.add(function.apply(element));
         }
 
-        return new Stream<>(result);
+        return Stream.of(result);
+    }
+
+    public void forEach(Consumer<T> consumer) {
+        for (T element : elements) {
+            consumer.accept(element);
+        }
     }
 }
