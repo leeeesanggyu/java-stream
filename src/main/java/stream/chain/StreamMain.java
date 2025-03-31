@@ -8,7 +8,7 @@ public class StreamMain {
         List<String> strings = List.of("banana", "apple", "kiwi", "corn", "cute", "a");
         Stream.of(strings)
                 .filter(string -> string.length() > 1)
-                .map(string -> string.length())
-                .forEach(length -> System.out.print(length));
+                .map(String::length)
+                .forEach(System.out::print);
     }
 }
